@@ -30,7 +30,7 @@ VĖLIAU
 ... npm start ---
 
 ### Lounch for production
-... npm build ---
+... npm run build ---
 </div>
 
 ## View Code
