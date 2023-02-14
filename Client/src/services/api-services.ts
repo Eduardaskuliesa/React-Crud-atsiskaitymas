@@ -10,13 +10,20 @@ const api = axios.create({
   },
 });
 const fetchBeefs = async () => {
-  const { data: fetchedBeefs } = await api.get<BeefModel[]>('/beef');
+  const { data } = await api.get<BeefModel[]>('/beef');
 
-  return fetchedBeefs;
+  return data;
+};
+
+const fetchBeef = async (id: string | number) => {
+  const { data } = await api.get<BeefModel>(`/beef/${id}`);
+
+  return data;
 };
 
 const ApiServices = {
   fetchBeefs,
+  fetchBeef,
 
 };
 export default ApiServices;
