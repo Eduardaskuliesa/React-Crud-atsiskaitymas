@@ -8,8 +8,16 @@ export const ContentWrapper = styled(Stack)(({ theme }) => ({
 
 export const ButtonContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
+  justifyContent: 'center',
   gap: theme.spacing(1),
-  padding: theme.spacing(1),
+  marginTop: theme.spacing(3),
+  '&>*': {
+    flexGrow: 1,
+  },
+}));
+
+export const AdminActions = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: theme.spacing(1),
+  left: theme.spacing(1),
 }));

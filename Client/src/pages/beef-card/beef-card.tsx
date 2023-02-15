@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   Stack, Typography, Button,
-  Rating,
+  Rating, Box,
 } from '@mui/material';
 import BeefModel from 'models/beef-model';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 import routes from 'navigation/routes';
+import DangerousIcon from '@mui/icons-material/Dangerous';
 import Img from '../../components/ui/img';
 import * as Styled from './styled';
 
@@ -21,24 +22,37 @@ const BeefCard: React.FC<BeefModelProps> = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <Stack sx={{ boxShadow: 3 }}>
+    <Stack sx={{
+      position: 'relative',
+      boxShadow: 3,
+    }}
+    >
       <Img src={img[0]} sx={{ aspectRatio: '1.42', width: 1 }} />
+      <Styled.AdminActions>
+        <Button><DangerousIcon fontSize="large" color="error" /></Button>
+        <Button variant="contained" color="success" size="medium">UPDATE</Button>
+      </Styled.AdminActions>
       <Styled.ContentWrapper>
-        <Typography component="h2" sx={{ fontWeight: 600, fontSize: '1.2rem' }}>{cut}</Typography>
-        <Typography component="h3">{price}</Typography>
-      </Styled.ContentWrapper>
-      <Styled.ButtonContainer>
-        <Button><ShoppingCartIcon /></Button>
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={() => (navigate(routes.BeefPage.createLink(id)))}
-        >
-          ABOUT
+        <Box display="flex" justifyContent="space-between">
+          <Box>
+            <Typography component="h2" sx={{ fontWeight: 600, fontSize: '1.2rem' }}>{cut}</Typography>
+            <Typography component="h3">{price}</Typography>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              onClick={() => navigate(routes.BeefPage.createLink(id))}
+            >
+              ABOUT
 
-        </Button>
-        <Rating defaultValue={rating} precision={0.5} readOnly />
-      </Styled.ButtonContainer>
+            </Button>
+          </Box>
+        </Box>
+        <Styled.ButtonContainer>
+          <Button><ShoppingCartIcon /></Button>
+          <Rating defaultValue={rating} precision={0.5} readOnly />
+        </Styled.ButtonContainer>
+      </Styled.ContentWrapper>
     </Stack>
 
   );

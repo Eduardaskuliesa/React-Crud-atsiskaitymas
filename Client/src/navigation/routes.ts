@@ -6,6 +6,7 @@ const routes = {
     routePath: `${BeefPagePath}:id`,
     createLink: (id: string | number) => `${BeefPagePath}${id}`,
   },
+  BeefFormPage: '/beef-form-page',
 } as const;
 
 export type Routes = typeof routes;
