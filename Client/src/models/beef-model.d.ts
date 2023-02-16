@@ -3,9 +3,9 @@ type BeefModel = {
   cut: string,
   farm: {
     country: string,
-    city: string
+    name: string
   },
-  img: string[],
+  images: string[],
   price: string
   rating: number
 };

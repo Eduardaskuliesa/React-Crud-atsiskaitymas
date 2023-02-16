@@ -1,5 +1,9 @@
+import React from 'react';
 import {
-  Paper as MuiPaper, styled, Stack,
+  Paper as MuiPaper,
+  PaperProps,
+  styled,
+  Stack,
 } from '@mui/material';
 
 export const Container = styled(Stack)(({ theme }) => ({
@@ -15,8 +19,16 @@ export const Container = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const Paper = styled(MuiPaper)(({ theme }) => ({
+const Form = React.forwardRef(
+  (
+    props: Omit<PaperProps<'form'>, 'component' | 'ref'>,
+    ref: PaperProps<'form'>['ref'],
+  ) => <MuiPaper component="form" ref={ref} {...props} />,
+);
+
+export const PaperForm = styled(Form)(({ theme }) => ({
   padding: theme.spacing(3),
+
   [theme.breakpoints.up('sm')]: {
     width: `calc(${theme.breakpoints.values.sm}px - ${theme.spacing(4)})`,
   },

@@ -16,7 +16,7 @@ type BeefModelProps = BeefModel;
 const BeefCard: React.FC<BeefModelProps> = ({
   price,
   cut,
-  img,
+  images,
   rating,
   id,
 }) => {
@@ -27,7 +27,7 @@ const BeefCard: React.FC<BeefModelProps> = ({
       boxShadow: 3,
     }}
     >
-      <Img src={img[0]} sx={{ aspectRatio: '1.42', width: 1 }} />
+      <Img src={images[0]} sx={{ aspectRatio: '1.42', width: 1 }} />
       <Styled.AdminActions>
         <Button><DangerousIcon fontSize="large" color="error" /></Button>
         <Button variant="contained" color="success" size="medium">UPDATE</Button>

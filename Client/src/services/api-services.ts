@@ -20,10 +20,22 @@ const fetchBeef = async (id: string | number) => {
 
   return data;
 };
+const postBeef = async (beefData: Omit<BeefModel, 'id'>) => {
+  await api.post('/beef', {
+    cut: beefData.cut,
+    farm: {
+      country: beefData.farm.country,
+      name: beefData.farm.name,
+    },
+    images: beefData.images,
+    price: beefData.price,
+    rating: beefData.rating,
+  });
+};
 
 const ApiServices = {
   fetchBeefs,
   fetchBeef,
-
+  postBeef,
 };
 export default ApiServices;
