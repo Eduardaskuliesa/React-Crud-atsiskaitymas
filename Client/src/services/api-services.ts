@@ -20,6 +20,12 @@ const fetchBeef = async (id: string | number) => {
 
   return data;
 };
+
+const deleteBeef = async (id: string | number) => {
+  const { data } = await api.delete(`beef/${id}`);
+
+  return data;
+};
 const postBeef = async (beefData: Omit<BeefModel, 'id'>) => {
   await api.post('/beef', {
     cut: beefData.cut,
@@ -36,6 +42,7 @@ const postBeef = async (beefData: Omit<BeefModel, 'id'>) => {
 const ApiServices = {
   fetchBeefs,
   fetchBeef,
+  deleteBeef,
   postBeef,
 };
 export default ApiServices;

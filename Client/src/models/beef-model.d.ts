@@ -1,5 +1,5 @@
 type BeefModel = {
-  id: number,
+  id: string,
   cut: string,
   farm: {
     country: string,

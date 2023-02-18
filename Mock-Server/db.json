@@ -179,20 +179,6 @@
       ],
       "price": "$10-$20/kg",
       "rating": 5
-    },
-    {
-      "cut": "Filet",
-      "farm": {
-        "country": "Lietuva",
-        "name": "Mano"
-      },
-      "images": [
-        "Nera",
-        "asd"
-      ],
-      "price": "500000.00$",
-      "rating": 4.5,
-      "id": "dbaywkK"
     }
   ]
 }

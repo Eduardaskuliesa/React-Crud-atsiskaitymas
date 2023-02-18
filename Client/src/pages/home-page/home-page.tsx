@@ -9,6 +9,12 @@ import Header from './header';
 const HomePage = () => {
   const [beefs, setBeefs] = React.useState<BeefModel[]>([]);
 
+  const onDelete = async (id: string) => {
+    await ApiServices.deleteBeef(id);
+    const fetchedBeefs = await ApiServices.fetchBeefs();
+    setBeefs(fetchedBeefs);
+  };
+
   React.useEffect(() => {
     (async () => {
       const fetchedBeefs = await ApiServices.fetchBeefs();
@@ -20,7 +26,13 @@ const HomePage = () => {
     <Container>
       <Header />
       <Styled.BeefCardGrid>
-        {beefs.map((beef) => <BeefCard key={beef.id} {...beef} />)}
+        {beefs.map((beef) => (
+          <BeefCard
+            key={beef.id}
+            {...beef}
+            onDelete={() => onDelete(beef.id)}
+          />
+        ))}
       </Styled.BeefCardGrid>
     </Container>
 

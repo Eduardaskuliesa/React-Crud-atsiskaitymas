@@ -11,7 +11,9 @@ import DangerousIcon from '@mui/icons-material/Dangerous';
 import Img from '../../components/ui/img';
 import * as Styled from './styled';
 
-type BeefModelProps = BeefModel;
+type BeefModelProps = BeefModel & {
+  onDelete: VoidFunction
+};
 
 const BeefCard: React.FC<BeefModelProps> = ({
   price,
@@ -19,8 +21,10 @@ const BeefCard: React.FC<BeefModelProps> = ({
   images,
   rating,
   id,
+  onDelete,
 }) => {
   const navigate = useNavigate();
+
   return (
     <Stack sx={{
       position: 'relative',
@@ -29,7 +33,7 @@ const BeefCard: React.FC<BeefModelProps> = ({
     >
       <Img src={images[0]} sx={{ aspectRatio: '1.42', width: 1 }} />
       <Styled.AdminActions>
-        <Button><DangerousIcon fontSize="large" color="error" /></Button>
+        <Button onClick={onDelete}><DangerousIcon fontSize="large" color="error" /></Button>
         <Button variant="contained" color="success" size="medium">UPDATE</Button>
       </Styled.AdminActions>
       <Styled.ContentWrapper>
